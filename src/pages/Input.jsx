@@ -1,17 +1,19 @@
 import React from "react";
+import AddInput from "../smartComponents/AddInput";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/slices/todoSlice";
 import { useState } from "react";
-import AddInput from "./AddInput";
 
 const Input = () => {
   const [inputValue, setInputValue] = useState("");
-  const [paragraphs, setParagraphs] = useState([]);
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && inputValue.trim()) {
-      setParagraphs([...paragraphs, inputValue]);
+      dispatch(addTodo(inputValue));
       setInputValue("");
     }
   };
@@ -25,7 +27,7 @@ const Input = () => {
         onChange={handleSubmit}
         onKeyPress={handleKeyPress}
       />
-      <AddInput paragraphs={paragraphs} setParagraphs={setParagraphs} />
+      <AddInput />
     </>
   );
 };
