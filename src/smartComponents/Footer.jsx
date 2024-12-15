@@ -3,8 +3,10 @@ import Button from "../components/Button";
 import ParagraphFooter from "../components/ParagraphFooter";
 import ColorFilterOption from "../components/ColorFilterOption";
 import { colorArray } from "../utils/colorArray";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const todoLength = useSelector((store) => store.todo.items.length);
   return (
     <>
       <div className="border-t-4"></div>
@@ -18,7 +20,7 @@ const Footer = () => {
 
         <div>
           <ParagraphFooter paraText="Remaining Todos" />
-          <p className="text-center">1 item left</p>
+          <p className="text-center">{todoLength} item left</p>
         </div>
 
         <div>

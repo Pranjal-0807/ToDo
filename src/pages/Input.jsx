@@ -8,15 +8,28 @@ const Input = () => {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
+    // e.preventDefault();
     setInputValue(e.target.value);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && inputValue.trim()) {
-      dispatch(addTodo(inputValue));
+      // dispatch(addTodo(inputValue));
+      dispatch(
+        addTodo({
+          title: inputValue,
+          checked: false,
+          color: "",
+        })
+      );
       setInputValue("");
     }
   };
+
+  // const handleEdit = (e) => {
+  //   setInputValue(e.target.value);
+  // };
+
   return (
     <>
       <input
