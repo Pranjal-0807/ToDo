@@ -1,7 +1,7 @@
 import React from "react";
 import Heading from "./components/Heading";
 import Input from "./pages/Input";
-import Footer from "./smartComponents/Footer";
+import Footer from "./pages/Footer";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 

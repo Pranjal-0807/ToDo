@@ -1,34 +1,21 @@
 import React from "react";
-import AddInput from "../smartComponents/AddInput";
 import { useDispatch } from "react-redux";
+import AddInput from "../smartComponents/AddInput";
 import { addTodo } from "../redux/slices/todoSlice";
-import { useState } from "react";
 
 const Input = () => {
-  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    setInputValue(e.target.value);
-  };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && inputValue.trim()) {
-      // dispatch(addTodo(inputValue));
+    if (e.key === "Enter" && e.target.value.trim()) {
       dispatch(
         addTodo({
-          title: inputValue,
-          checked: false,
-          color: "",
+          title: e.target.value.trim(),
         })
       );
-      setInputValue("");
+      e.target.value = "";
     }
   };
-
-  // const handleEdit = (e) => {
-  //   setInputValue(e.target.value);
-  // };
 
   return (
     <>
@@ -36,8 +23,6 @@ const Input = () => {
         type="text"
         placeholder="What needs to be done?"
         className="mx-28 size-3/4 px-4 py-4 border-b-2"
-        value={inputValue}
-        onChange={handleSubmit}
         onKeyPress={handleKeyPress}
       />
       <AddInput />

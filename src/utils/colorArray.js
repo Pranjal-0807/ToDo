@@ -1,1 +1,1 @@
-export const colorArray = ["green", "blue", "orange", "purple", "red"];
+export const colorArray = ["Green", "Blue", "Orange", "Purple", "Red"];
